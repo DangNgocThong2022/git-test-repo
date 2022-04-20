@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Test suite create student">
+    <listeners>
+        <listener class-name="utils.listeners.TestListener"/>
+    </listeners>
+
+    <test name = "Delete student success with role admin">
+        <groups>
+            <run>
+                <include name = "admin" />
+            </run>
+        </groups>
+        <classes>
+            <class name = "testcase.TestCaseDeleteStudent" />
+        </classes>
+    </test>
+    <test name = "Delete student success with role teacher">
+        <groups>
+            <run>
+                <include name = "teacher" />
+            </run>
+        </groups>
+        <classes>
+            <class name = "testcase.TestCaseDeleteStudent" />
+        </classes>
+    </test>
+
+</suite>

@@ -1,0 +1,73 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Test suite Admin">
+    <listeners>
+        <listener class-name="utils.listeners.TestListener"/>
+    </listeners>
+    <test name = "Login success">
+        <groups>
+            <run>
+                <include name = "admin" />
+            </run>
+        </groups>
+        <classes>
+            <class name = "testcase.TestCaseLogin" />
+        </classes>
+    </test>
+
+    <test name = "Add Student success">
+        <groups>
+            <run>
+                <include name = "admin" />
+            </run>
+        </groups>
+        <classes>
+            <class name = "testcase.TestCaseAddStudent" />
+        </classes>
+    </test>
+
+    <test name = "Edit Student success">
+        <groups>
+            <run>
+                <include name = "admin" />
+            </run>
+        </groups>
+        <classes>
+            <class name = "testcase.TestCaseEditStudent" />
+        </classes>
+    </test>
+
+    <test name = "Delete Student success">
+        <groups>
+            <run>
+                <include name = "admin" />
+            </run>
+        </groups>
+        <classes>
+            <class name = "testcase.TestCaseDeleteStudent" />
+        </classes>
+    </test>
+
+    <test name = "Download Student roster import template success">
+        <groups>
+            <run>
+                <include name = "admin" />
+            </run>
+        </groups>
+        <classes>
+            <class name = "testcase.TestCaseDownloadStudentRosterImportTemplate" />
+        </classes>
+    </test>
+    <test name = "Import Student success">
+        <groups>
+            <run>
+                <include name = "admin" />
+            </run>
+        </groups>
+        <classes>
+            <class name = "testcase.TestCaseImportRosterStudent" />
+        </classes>
+    </test>
+
+</suite>

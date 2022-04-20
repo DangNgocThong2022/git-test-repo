@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Test suite download student roster template">
+    <listeners>
+        <listener class-name="utils.listeners.TestListener"/>
+    </listeners>
+    <test name = "Download student import template success with role admin">
+        <groups>
+            <run>
+                <include name = "admin" />
+            </run>
+        </groups>
+        <classes>
+            <class name = "testcase.TestCaseDownloadStudentRosterImportTemplate" />
+        </classes>
+    </test>
+    <test name = "Download student import template success with role teacher">
+        <groups>
+            <run>
+                <include name = "teacher" />
+            </run>
+        </groups>
+        <classes>
+            <class name = "testcase.TestCaseDownloadStudentRosterImportTemplate" />
+        </classes>
+    </test>
+
+</suite>

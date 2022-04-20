@@ -1,0 +1,67 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Test suite Teacher">
+    <listeners>
+        <listener class-name="utils.listeners.TestListener"/>
+    </listeners>
+    <test name="Login success">
+        <groups>
+            <run>
+                <include name = "teacher" />
+            </run>
+        </groups>
+        <classes>
+            <class name="testcase.TestCaseLogin" />
+        </classes>
+    </test>
+
+    <test name="Create Student success">
+        <groups>
+            <run>
+                <include name = "teacher" />
+            </run>
+        </groups>
+        <classes>
+            <class name="testcase.TestCaseAddStudent" />
+        </classes>
+    </test>
+
+    <test name="Edit Student success">
+        <groups>
+            <run>
+                <include name = "teacher" />
+            </run>
+        </groups>
+        <classes>
+            <class name="testcase.TestCaseEditStudent" />
+        </classes>
+    </test>
+
+    <test name="Delete Student success">
+        <groups>
+            <run>
+                <include name = "teacher" />
+            </run>
+        </groups>
+        <classes>
+            <class name="testcase.TestCaseDeleteStudent" />
+        </classes>
+    </test>
+
+    <test name="Import Roster Student success">
+        <groups>
+            <run>
+                <include name = "teacher" />
+            </run>
+        </groups>
+        <classes>
+            <class name="testcase.TestCaseImportRosterStudent" />
+        </classes>
+    </test>
+
+    <test name="Download Roster Student success">
+        <classes>
+            <class name="testcase.TestCaseDownloadStudentRosterImportTemplate" />
+        </classes>
+    </test>
+
+</suite>

@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Test suite login">
+    <listeners>
+        <listener class-name="utils.listeners.TestListener"/>
+    </listeners>
+    <test name = "Login success with admin">
+        <groups>
+            <run>
+                <include name = "admin" />
+            </run>
+        </groups>
+        <classes>
+            <class name = "testcase.TestCaseLogin" />
+        </classes>
+    </test>
+
+    <test name = "Login success with teacher">
+        <groups>
+            <run>
+                <include name = "teacher" />
+            </run>
+        </groups>
+        <classes>
+            <class name = "testcase.TestCaseLogin" />
+        </classes>
+    </test>
+
+</suite>

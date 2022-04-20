@@ -1,29 +1,52 @@
-package TestCase;
+package testcase;
 
-import PageObject.HomePage;
+import org.sikuli.script.FindFailed;
+import pageobject.HomePage;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
-import Common.constant;
-import PageObject.LoginPage;
+import common.Constant;
+import pageobject.LoginPage;
+import pageobject.MyAccountPage;
 
-public class TestCaseLogin extends BaseTest{
+import java.io.File;
+
+public class TestCaseLogin extends BaseTest {
+    //Declare object and variable
     private LoginPage loginPageObject;
     private HomePage homePageObject;
-    @Test(priority = 0)
-    private void loginSuccess() throws InterruptedException {
-        homePageObject = loginPageObject.loginSuccess(constant.usernameAdminAccount, constant.passwordAdminAccount);
-        homePageObject.verifyLoginSuccess();
-        loginPageObject=homePageObject.logout();
-    }
-    @BeforeTest
-    private void setUp() {
-        constant.driver = openBrowser(constant.browserChrome);
-        loginPageObject=openLoginPage();
+    private MyAccountPage myAccountPageObject;
 
+    @Test(description = "User can login success with role teacher",groups = {"teacher"},priority = 2)
+    private void loginSuccessWithRoleTeacher() throws Exception {
+        //Login success
+        loginPageObject = openLoginPage();
+        homePageObject = loginPageObject.loginSuccess(Constant.passcodeAccount,Constant.usernameTeacherAccount, Constant.passwordTeacherAccount);
+        //Go to My Account page
+        myAccountPageObject = homePageObject.goToMyAccountPage();
+        //Verify username is correctly
+        Assert.assertEquals(myAccountPageObject.getUserName(), Constant.usernameTeacherAccount);
     }
 
-    @AfterTest
-    private void tearDown() {
-        constant.driver.quit();
+    @Test(description = "User can login success with role admin",groups = {"admin"},priority = 1)
+    private void loginSuccessWithRoleAdmin() throws Exception {
+        //Login success
+        loginPageObject = openLoginPage();
+        homePageObject = loginPageObject.loginSuccess(Constant.passcodeAccount,Constant.usernameAdminAccount, Constant.passwordAdminAccount);
+        //Go to My Account page
+        myAccountPageObject = homePageObject.goToMyAccountPage();
+        //Verify username is correctly
+        Assert.assertEquals(myAccountPageObject.getUserName(), Constant.usernameAdminAccount);
+    }
+
+    @AfterMethod(description = "Post condition: Logout success",groups = {"admin","teacher"})
+    private void logoutSuccess() throws Exception {
+        //Logout
+        loginPageObject = homePageObject.logout();
+        //Verify logout success
+        Assert.assertTrue(loginPageObject.isTitleLoginExist());
+        Assert.assertTrue(loginPageObject.isLoginBtnExist());
+        Assert.assertTrue(loginPageObject.isUsernameTxbExist());
+        Assert.assertTrue(loginPageObject.isPasswordTxbExist());
     }
 }
